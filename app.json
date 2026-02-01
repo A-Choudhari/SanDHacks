@@ -43,6 +43,9 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "BACKEND_URL": "https://6d4efe1de7a0f0f2-128-54-132-165.serveousercontent.com"
     }
   }
 }

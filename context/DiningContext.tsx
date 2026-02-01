@@ -6,6 +6,7 @@ interface DiningContextType {
     favorites: string[]; // List of Item IDs
     toggleFavorite: (itemId: string) => void;
     isFavorite: (itemId: string) => boolean;
+    userId: string; // Current user ID for API calls
 }
 
 const DiningContext = createContext<DiningContextType | undefined>(undefined);
@@ -13,6 +14,8 @@ const DiningContext = createContext<DiningContextType | undefined>(undefined);
 export function DiningProvider({ children }: { children: ReactNode }) {
     const [favorites, setFavorites] = useState<string[]>([]);
     const [locations] = useState<DiningLocation[]>(MOCK_LOCATIONS);
+    // Hardcoded user ID for testing
+    const userId = 'user123';
 
     const toggleFavorite = (itemId: string) => {
         setFavorites((prev) =>
@@ -25,7 +28,7 @@ export function DiningProvider({ children }: { children: ReactNode }) {
     const isFavorite = (itemId: string) => favorites.includes(itemId);
 
     return (
-        <DiningContext.Provider value={{ locations, favorites, toggleFavorite, isFavorite }}>
+        <DiningContext.Provider value={{ locations, favorites, toggleFavorite, isFavorite, userId }}>
             {children}
         </DiningContext.Provider>
     );
